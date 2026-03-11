@@ -13,7 +13,7 @@
 
 
 import streamlit as st
-import pyodbc
+import pymssql
 import pandas as pd
 # ============================================================
 #  DATABASE CONNECTION FUNCTION
@@ -38,14 +38,14 @@ import pandas as pd
 
 def get_connection():
     try:
-        conn = pyodbc.connect(
-            'DRIVER={ODBC Driver 18 for SQL Server};'
-            'SERVER=stats-server-suhaib.database.windows.net;'
-            'DATABASE=stats-db;'
-            'UID=sqladmin;'
-            'PWD=Stats@2026!;'
-            'Encrypt=yes;'
-            'TrustServerCertificate=yes;'
+        conn = pymssql.connect(
+            server='stats-server-suhaib.database.windows.net',
+            user='sqladmin',
+            password='Stats@2026!',
+            database='stats-db',
+            port=1433,
+            tds_version='7.4',
+            encryption='require'
         )
         return conn
     except Exception as e:
@@ -147,7 +147,7 @@ if st.button("💾 Save to Database", use_container_width=True):
             # %s are placeholders — pymssql replaces them safely
             # We don't insert CustomerID because it's IDENTITY (auto-increment)
             cursor.execute(
-                "INSERT INTO [Students Information] ([Name], [Email], [PhoneNumber]) VALUES (?, ?, ?)",
+                "INSERT INTO [Students Information] ([Name], [Email], [PhoneNumber]) VALUES (%s, %s, %s)",
                 (name, email, phone)
             )
 
