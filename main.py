@@ -1,17 +1,15 @@
 import streamlit as st
-import pyodbc
+import pymssql
+
 
 # ── Database connection ──────────────────────────────────────────
 def get_connection():
-    conn = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=stats-server-suhaib.database.windows.net;'
-        'DATABASE=stats-db;'
-        'UID=sqladmin;'
-        'PWD=Stats@2026!;'
-        'Encrypt=yes;'
-        'TrustServerCertificate=no;'
-        'Connection Timeout=30;'
+    conn = pymssql.connect(
+        server='stats-server-suhaib.database.windows.net',
+        user='sqladmin',
+        password='Stats@2026!',
+        database='stats-db',
+        tds_version='7.0'
     )
     return conn
 
