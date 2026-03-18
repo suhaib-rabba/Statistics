@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Compass — Brand Identity</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --blue: #1B4FD8;
+    --blue-mid: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-pale: #DBEAFE;
+    --white: #FFFFFF;
+    --off-white: #F8FAFF;
+    --gray: #94A3B8;
+    --dark-gray: #334155;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--off-white);
+    font-family: 'Outfit', sans-serif;
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(27,79,216,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(59,130,246,0.06) 0%, transparent 50%);
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 50px;
+    font-weight: 400;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  /* ─── MAIN LOGO ─── */
+  .logo-container {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+    opacity: 0;
+  }
+
+  .logo-mark {
+    width: 120px; height: 120px;
+    position: relative;
+  }
+
+  .logo-mark svg {
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 30px rgba(59,130,246,0.4));
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .logo-name {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .logo-name span {
+    color: var(--blue-light);
+  }
+
+  .logo-tagline {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── COMPASS SVG ANIMATION ─── */
+  .needle {
+    transform-origin: 50% 50%;
+    animation: spin 6s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 48px;
+  }
+
+  /* ─── COLOR PALETTE ─── */
+  .palette {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .color-card {
+    flex: 1;
+    min-width: 140px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .color-swatch {
+    height: 100px;
+  }
+
+  .color-info {
+    background: white;
+    padding: 14px 16px;
+  }
+
+  .color-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    font-family: monospace;
+  }
+
+  .color-role {
+    font-size: 10px;
+    color: var(--blue-mid);
+    margin-top: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── LOGO VARIATIONS ─── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .logo-variant {
+    border-radius: 20px;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .variant-label {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-weight: 600;
+  }
+
+  .v-dark { background: var(--navy); }
+  .v-light { background: white; border: 1px solid #E2E8F0; }
+  .v-blue { background: var(--blue); }
+  .v-pale { background: var(--blue-pale); }
+
+  .v-name-white { font-size: 28px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+  .v-name-white span { color: var(--blue-light); }
+  .v-name-dark { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; }
+  .v-name-dark span { color: var(--blue-mid); }
+  .v-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; }
+  .v-tag-light { color: var(--gray); }
+  .v-tag-blue { color: var(--blue-pale); opacity: 0.7; }
+  .v-tag-dark { color: var(--gray); }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-showcase {
+    background: white;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .type-row {
+    padding: 24px 0;
+    border-bottom: 1px solid #F1F5F9;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-meta {
+    min-width: 120px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* ─── BRAND APPLICATIONS ─── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  /* Business Card */
+  .biz-card {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px;
+    aspect-ratio: 1.75/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 60px rgba(10,22,40,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .biz-card::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(59,130,246,0.15);
+  }
+
+  .biz-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(59,130,246,0.1);
+  }
+
+  .card-logo { font-size: 20px; font-weight: 800; color: white; }
+  .card-logo span { color: var(--blue-light); }
+  .card-name { font-size: 14px; font-weight: 600; color: white; }
+  .card-title { font-size: 11px; color: var(--blue-light); letter-spacing: 1px; margin-top: 2px; }
+  .card-contact { font-size: 10px; color: var(--gray); letter-spacing: 0.5px; margin-top: 3px; }
+
+  /* Social Post */
+  .social-post {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+    border-radius: 16px;
+    padding: 36px;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-post::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.1);
+  }
+
+  .post-quote {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.5;
+    position: relative; z-index: 1;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .post-brand {
+    font-size: 12px;
+    color: var(--blue-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+  }
+
+  /* Email Header */
+  .email-header {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .email-top {
+    background: var(--navy);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .email-logo-text { font-size: 22px; font-weight: 800; color: white; }
+  .email-logo-text span { color: var(--blue-light); }
+  .email-tagline-small { font-size: 10px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; }
+  .email-accent { height: 4px; background: linear-gradient(90deg, var(--blue-mid), var(--blue-light)); }
+  .email-body { padding: 32px; }
+  .email-greeting { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 12px; font-family: 'Tajawal', sans-serif; }
+  .email-text { font-size: 13px; color: var(--dark-gray); line-height: 1.7; font-family: 'Tajawal', sans-serif; }
+  .email-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: var(--blue-mid);
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── TAGLINE ─── */
+  .tagline-section {
+    background: var(--navy);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .tagline-options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .tagline-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: all 0.3s;
+  }
+
+  .tagline-card:hover {
+    background: rgba(37,99,235,0.15);
+    border-color: rgba(59,130,246,0.3);
+    transform: translateX(-4px);
+  }
+
+  .tagline-ar { font-size: 18px; font-weight: 700; color: white; font-family: 'Tajawal', sans-serif; }
+  .tagline-en { font-size: 13px; color: var(--blue-light); letter-spacing: 1px; }
+  .tagline-badge {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .badge-top { background: rgba(37,99,235,0.3); color: var(--blue-light); }
+  .badge-alt { background: rgba(255,255,255,0.08); color: var(--gray); }
+
+  /* ─── FOOTER ─── */
+  .brand-footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo { font-size: 18px; font-weight: 800; color: white; }
+  .footer-logo span { color: var(--blue-light); }
+  .footer-note { font-size: 11px; color: var(--gray); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-label">Brand Identity System — 2026</div>
+
+  <div class="logo-container">
+    <div class="logo-mark">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="60" cy="60" r="54" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
+        <!-- Main circle -->
+        <circle cx="60" cy="60" r="46" stroke="#2563EB" stroke-width="1.5"/>
+        <!-- Inner circle -->
+        <circle cx="60" cy="60" r="6" fill="#3B82F6"/>
+        <!-- Tick marks -->
+        <line x1="60" y1="14" x2="60" y2="22" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="60" y1="98" x2="60" y2="106" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="60" x2="22" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="98" y1="60" x2="106" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Cardinal letters -->
+        <text x="57" y="12" fill="#60A5FA" font-size="8" font-family="Outfit" font-weight="700">N</text>
+        <!-- Needle -->
+        <g class="needle">
+          <polygon points="60,20 56,60 60,56 64,60" fill="#3B82F6"/>
+          <polygon points="60,100 56,60 60,64 64,60" fill="rgba(59,130,246,0.25)"/>
+        </g>
+        <!-- Center dot -->
+        <circle cx="60" cy="60" r="3.5" fill="white"/>
+      </svg>
+    </div>
+
+    <div class="logo-text">
+      <div class="logo-name">Data <span>Compass</span></div>
+      <div class="logo-tagline">Navigate with Data</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COLOR PALETTE ══ -->
+<section class="section">
+  <div class="section-label">01 — Color System</div>
+  <div class="section-title">لوحة الألوان الرسمية</div>
+
+  <div class="palette">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0A1628"></div>
+      <div class="color-info">
+        <div class="color-name">Navy Deep</div>
+        <div class="color-hex">#0A1628</div>
+        <div class="color-role">اللون الأساسي</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#2563EB"></div>
+      <div class="color-info">
+        <div class="color-name">Compass Blue</div>
+        <div class="color-hex">#2563EB</div>
+        <div class="color-role">لون العلامة</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#3B82F6"></div>
+      <div class="color-info">
+        <div class="color-name">Data Blue</div>
+        <div class="color-hex">#3B82F6</div>
+        <div class="color-role">لون مساعد</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#DBEAFE"></div>
+      <div class="color-info">
+        <div class="color-name">Sky Pale</div>
+        <div class="color-hex">#DBEAFE</div>
+        <div class="color-role">خلفيات فاتحة</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFFFFF; border-top: 1px solid #E2E8F0"></div>
+      <div class="color-info">
+        <div class="color-name">Pure White</div>
+        <div class="color-hex">#FFFFFF</div>
+        <div class="color-role">نص على داكن</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOGO VARIATIONS ══ -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">02 — Logo Variations</div>
+  <div class="section-title">تنويعات اللوغو</div>
+
+  <div class="logo-grid">
+    <!-- Dark -->
+    <div class="logo-variant v-dark">
+      <div class="variant-label" style="color:rgba(255,255,255,0.3)">Dark</div>
+      <svg width="56" height="56" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="46" stroke="#2563EB" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="6" fill="#3B82F6"/>
+        <line x1="60" y1="14" x2="60" y2="22" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="60" y1="98" x2="60" y2="106" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="60" x2="22" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="98" y1="60" x2="106" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="60,20 56,60 60,56 64,60" fill="#3B82F6"/>
+        <polygon points="60,100 56,60 60,64 64,60" fill="rgba(59,130,246,0.25)"/>
+        <circle cx="60" cy="60" r="3.5" fill="white"/>
+      </svg>
+      <div class="v-name-white">Data <span>Compass</span></div>
+      <div class="v-tag v-tag-light">بياناتك دليلك</div>
+    </div>
+
+    <!-- Light -->
+    <div class="logo-variant v-light">
+      <div class="variant-label" style="color:#94A3B8">Light</div>
+      <svg width="56" height="56" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="46" stroke="#2563EB" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="6" fill="#3B82F6"/>
+        <line x1="60" y1="14" x2="60" y2="22" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="60" y1="98" x2="60" y2="106" stroke="rgba(37,99,235,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="60" x2="22" y2="60" stroke="rgba(37,99,235,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="98" y1="60" x2="106" y2="60" stroke="rgba(37,99,235,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="60,20 56,60 60,56 64,60" fill="#2563EB"/>
+        <polygon points="60,100 56,60 60,64 64,60" fill="rgba(37,99,235,0.2)"/>
+        <circle cx="60" cy="60" r="3.5" fill="#0A1628"/>
+      </svg>
+      <div class="v-name-dark">Data <span>Compass</span></div>
+      <div class="v-tag v-tag-dark">Navigate with Data</div>
+    </div>
+
+    <!-- Blue -->
+    <div class="logo-variant v-blue">
+      <div class="variant-label" style="color:rgba(255,255,255,0.3)">Blue</div>
+      <svg width="56" height="56" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="46" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="6" fill="white"/>
+        <line x1="60" y1="14" x2="60" y2="22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="60" y1="98" x2="60" y2="106" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="60" x2="22" y2="60" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="98" y1="60" x2="106" y2="60" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="60,20 56,60 60,56 64,60" fill="white"/>
+        <polygon points="60,100 56,60 60,64 64,60" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="60" cy="60" r="3.5" fill="#2563EB"/>
+      </svg>
+      <div class="v-name-white">Data <span style="color:rgba(255,255,255,0.7)">Compass</span></div>
+      <div class="v-tag v-tag-blue">Navigate with Data</div>
+    </div>
+
+    <!-- Icon Only -->
+    <div class="logo-variant v-dark" style="justify-content:center">
+      <div class="variant-label" style="color:rgba(255,255,255,0.3)">Icon Only</div>
+      <svg width="80" height="80" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="54" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+        <circle cx="60" cy="60" r="46" stroke="#2563EB" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="6" fill="#3B82F6"/>
+        <line x1="60" y1="14" x2="60" y2="22" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="60" y1="98" x2="60" y2="106" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="60" x2="22" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="98" y1="60" x2="106" y2="60" stroke="rgba(59,130,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="60,20 56,60 60,56 64,60" fill="#3B82F6"/>
+        <polygon points="60,100 56,60 60,64 64,60" fill="rgba(59,130,246,0.25)"/>
+        <circle cx="60" cy="60" r="3.5" fill="white"/>
+      </svg>
+      <div class="v-tag v-tag-light" style="letter-spacing:2px">للاستخدام كـ Favicon</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TYPOGRAPHY ══ -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">03 — Typography</div>
+  <div class="section-title">الخطوط الرسمية</div>
+
+  <div class="type-showcase">
+    <div class="type-row">
+      <div class="type-meta">Display<br>Outfit 800</div>
+      <div style="font-size:42px; font-weight:800; color:var(--navy); letter-spacing:-1px">Data Compass</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Heading<br>Outfit 700</div>
+      <div style="font-size:28px; font-weight:700; color:var(--navy)">Navigate with Data Intelligence</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Body<br>Tajawal 400</div>
+      <div style="font-size:16px; font-weight:400; color:var(--dark-gray); font-family:'Tajawal',sans-serif; line-height:1.7">نحوّل البيانات إلى قرارات ذكية — تدريب متخصص وخدمات احترافية في علم البيانات</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Label<br>Outfit 600</div>
+      <div style="font-size:11px; font-weight:600; color:var(--blue-mid); letter-spacing:4px; text-transform:uppercase">Data Training · Analytics · Consulting</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TAGLINES ══ -->
+<section class="tagline-section">
+  <div style="max-width:1100px; margin:0 auto">
+    <div class="section-label" style="color:var(--blue-light); text-align:right">04 — Taglines</div>
+    <div class="section-title" style="color:white; text-align:right">الشعارات المقترحة</div>
+
+    <div class="tagline-options">
+      <div class="tagline-card">
+        <div>
+          <div class="tagline-ar">بياناتك دليلك</div>
+          <div class="tagline-en">Your Data, Your Direction</div>
+        </div>
+        <div class="tagline-badge badge-top">الأقوى ⭐</div>
+      </div>
+      <div class="tagline-card">
+        <div>
+          <div class="tagline-ar">نوجّه قراراتك بالبيانات</div>
+          <div class="tagline-en">Navigate with Data</div>
+        </div>
+        <div class="tagline-badge badge-alt">للمؤسسات</div>
+      </div>
+      <div class="tagline-card">
+        <div>
+          <div class="tagline-ar">حيث تتحوّل البيانات إلى بوصلة</div>
+          <div class="tagline-en">Where Data Becomes Direction</div>
+        </div>
+        <div class="tagline-badge badge-alt">للتوعية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPLICATIONS ══ -->
+<section class="section">
+  <div class="section-label">05 — Brand Applications</div>
+  <div class="section-title">تطبيقات الهوية</div>
+
+  <div class="apps-grid">
+    <!-- Business Card -->
+    <div class="biz-card">
+      <div class="card-logo">Data <span>Compass</span></div>
+      <div>
+        <div class="card-name">محمد الأحمد</div>
+        <div class="card-title">Data Analyst & Trainer</div>
+        <div class="card-contact">datacompass.jo · +962 7X XXX XXXX</div>
+      </div>
+    </div>
+
+    <!-- Social Post -->
+    <div class="social-post">
+      <svg width="40" height="40" viewBox="0 0 120 120" fill="none">
+        <circle cx="60" cy="60" r="46" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <line x1="60" y1="14" x2="60" y2="22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="60,20 56,60 60,56 64,60" fill="white"/>
+        <circle cx="60" cy="60" r="4" fill="white"/>
+      </svg>
+      <div class="post-quote">"البيانات ليست أرقاماً<br>— هي بوصلتك نحو القرار الصحيح"</div>
+      <div class="post-brand">Data Compass · datacompass.jo</div>
+    </div>
+
+    <!-- Email Header -->
+    <div class="email-header">
+      <div class="email-top">
+        <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="46" stroke="#3B82F6" stroke-width="1.5"/>
+          <line x1="60" y1="14" x2="60" y2="22" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="60,20 56,60 60,56 64,60" fill="#3B82F6"/>
+          <circle cx="60" cy="60" r="4" fill="white"/>
+        </svg>
+        <div>
+          <div class="email-logo-text">Data <span>Compass</span></div>
+          <div class="email-tagline-small">Navigate with Data</div>
+        </div>
+      </div>
+      <div class="email-accent"></div>
+      <div class="email-body">
+        <div class="email-greeting">أهلاً وسهلاً! 👋</div>
+        <div class="email-text">شكراً لانضمامك إلى مجتمع Data Compass. نحن هنا لنكون بوصلتك في عالم البيانات.</div>
+        <div class="email-btn">ابدأ رحلتك →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div class="brand-footer">
+  <div class="footer-logo">Data <span>Compass</span></div>
+  <div class="footer-note">Brand Identity System · Version 1.0 · 2026</div>
+  <div class="footer-note">datacompass.jo</div>
+</div>
+
+</body>
+</html>
